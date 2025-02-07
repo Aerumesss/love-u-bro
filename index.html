@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ты меня любишь?</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            background-color: #ffcccb;
+            transition: background 0.5s;
+        }
+        .container {
+            padding: 20px;
+            background: white;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+        .hidden {
+            display: none;
+        }
+        .sad {
+            background-color: #999;
+        }
+        .happy {
+            background-color: #ff99cc;
+        }
+        .emoji {
+            font-size: 50px;
+        }
+        button {
+            padding: 10px 20px;
+            margin: 10px;
+            font-size: 18px;
+            cursor: pointer;
+            border: none;
+            border-radius: 5px;
+        }
+        .yes-btn { background-color: #4CAF50; color: white; }
+        .no-btn { background-color: #f44336; color: white; }
+    </style>
+</head>
+<body>
+    <div class="container" id="question1">
+        <h1>Ты меня любишь?</h1>
+        <button class="yes-btn" onclick="showNext('question2')">Да</button>
+        <button class="no-btn" onclick="showNext('sad')">Нет</button>
+    </div>
+
+    <div class="container hidden" id="question2">
+        <h1>Точно?</h1>
+        <button class="yes-btn" onclick="showNext('happy')">Да</button>
+        <button class="no-btn" onclick="showNext('sad')">Нет</button>
+    </div>
+
+    <div class="container hidden sad" id="sad">
+        <h1 class="emoji">😢😞😔</h1>
+        <h2>Я думал да((</h2>
+    </div>
+
+    <div class="container hidden happy" id="happy">
+        <h1 class="emoji">❤️😍🥰</h1>
+        <h2>Я тебя люблю очень сильно! ❤️ Ты моё самое лучшее солнышко! ☀️</h2>
+        <h3>Прости меня за всё, ты самое лучшее, что есть в моей жизни!</h3>
+    </div>
+
+    <script>
+        function showNext(nextId) {
+            document.querySelectorAll('.container').forEach(div => div.classList.add('hidden'));
+            document.getElementById(nextId).classList.remove('hidden');
+            if (nextId === 'sad') document.body.classList.add('sad');
+            if (nextId === 'happy') document.body.classList.add('happy');
+        }
+    </script>
+</body>
+</html>
